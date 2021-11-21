@@ -9,10 +9,8 @@ const Header = () => {
   const [user, setUser] = useState();
   useEffect(() => {
       const user = JSON.parse(localStorage.getItem('user'));
-      if(user != undefined){
+      if(user){
         setUser(user);
-      }else{
-        window.location.href="/login"
       }
       console.log(user);
     
