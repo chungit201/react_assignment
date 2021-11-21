@@ -24,7 +24,7 @@ const productSchema = new mongoose.Schema({
   
     description:{
         type:String,
-        maxlength:400
+        maxlength:500
     },
     status:{
         type:Boolean,

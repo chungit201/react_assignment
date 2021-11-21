@@ -11,6 +11,63 @@ body {
     font-weight: 400px;
     
 }
+.active_color{
+  color: #6b00b3;
+}
+.img_logo {
+  height: 18px;
+}
+.logo_group{
+  display: flex ;
+  margin-top: 10px;
+}
+.price_hover input{
+  font-size: 16px;
+  color: #fff !important;
+  background: transparent;
+  text-align: center;
+  font-weight: 700;
+}
+.price_product input{
+  text-align: center;
+  color: #000;
+  font-size: 16px;
+  font-weight: 700;
+  background: transparent;
+
+}
+.product-overlay {
+  background-color: rgb(92 91 88 / 60%) !important;
+}
+.left-sidebar h2, .brands_products h2 {
+  color: #e52c19 !important;
+
+}
+h2.title {
+  color: #e52c19 !important;
+}
+.nav-tabs li.active a, .nav-tabs li.active a:hover, .nav-tabs li.active a:focus {
+  background-color: #e52c19 !important;
+}
+.single-widget h2{
+  font-size: 1.5rem !important;
+}
+.icon_manage{
+  padding: 5px;
+}
+#carouselExampleControls{
+  margin-bottom: 40px;
+}
+p {
+  font-size: 1.5rem !important;
+}
+h2, .h2 {
+  font-size: 2.5rem !important;
+}
+
+.form-control, .select2-container--default .select2-selection--single, .select2-container--default .select2-selection--single .select2-search__field, .typeahead, .tt-query, .tt-hint {
+  font-size: 1.5rem !important;
+}
 .table th, .table td {
   
   font-size: 1.5rem !important;

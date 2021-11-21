@@ -2,65 +2,29 @@ import React from 'react'
 
 const Slider = () => {
     return (
-        <section id="slider">{/*slider*/}
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-12">
-                        <div id="slider-carousel" className="carousel slide" data-ride="carousel">
-                            <ol className="carousel-indicators">
-                                <li data-target="#slider-carousel" data-slide-to={0} className="active" />
-                                <li data-target="#slider-carousel" data-slide-to={1} />
-                                <li data-target="#slider-carousel" data-slide-to={2} />
-                            </ol>
-                            <div className="carousel-inner">
-                                <div className="item active">
-                                    <div className="col-sm-6">
-                                        <h1><span>E</span>-SHOPPER</h1>
-                                        <h2>Free E-Commerce Template</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                        <button type="button" className="btn btn-default get">Get it now</button>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <img src="images/home/girl1.jpg" className="girl img-responsive" alt="" />
-                                        <img src="images/home/pricing.png" className="pricing" alt="" />
-                                    </div>
-                                </div>
-                                <div className="item">
-                                    <div className="col-sm-6">
-                                        <h1><span>E</span>-SHOPPER</h1>
-                                        <h2>100% Responsive Design</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                        <button type="button" className="btn btn-default get">Get it now</button>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <img src="images/home/girl2.jpg" className="girl img-responsive" alt="" />
-                                        <img src="images/home/pricing.png" className="pricing" alt="" />
-                                    </div>
-                                </div>
-                                <div className="item">
-                                    <div className="col-sm-6">
-                                        <h1><span>E</span>-SHOPPER</h1>
-                                        <h2>Free Ecommerce Template</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                        <button type="button" className="btn btn-default get">Get it now</button>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <img src="images/home/girl3.jpg" className="girl img-responsive" alt="" />
-                                        <img src="images/home/pricing.png" className="pricing" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#slider-carousel" className="left control-carousel hidden-xs" data-slide="prev">
-                                <i className="fa fa-angle-left" />
-                            </a>
-                            <a href="#slider-carousel" className="right control-carousel hidden-xs" data-slide="next">
-                                <i className="fa fa-angle-right" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div className=" container">
+            <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
+        <div className="carousel-inner">
+          <div className="carousel-item active">
+            <img src="https://bizweb.dktcdn.net/100/438/408/themes/839420/assets/slider_4.jpg?1637476696414" className="d-block w-100" alt="..." />
+          </div>
+          <div className="carousel-item">
+            <img src="https://img3.thuthuatphanmem.vn/uploads/2019/10/14/banner-thoi-trang_113858538.png" className="d-block w-100" alt="..." />
+          </div>
+          <div className="carousel-item">
+            <img src="https://tmluxury.vn/wp-content/uploads/banner-do-shop-thoi-trang-nam-tphcm-tmluxury.jpg" className="d-block w-100" alt="..." />
+          </div>
+        </div>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true" />
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true" />
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
+        </div>
     )
 }
 

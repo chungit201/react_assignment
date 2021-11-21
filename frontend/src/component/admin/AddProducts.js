@@ -1,21 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { addProduct } from '../../api/productApi';
-
+import { ToastContainer, toast } from "react-toastify";
 const AddProduct = () => {
+    const [products, setProducts] = useState([]);
     const {
         register,
         handleSubmit,
-      } = useForm();
+    } = useForm();
 
-      const onSubmit = async (data) => {
-        console.log(data);
-        const product = await addProduct(data).then((item)=>{
-            console.log(item);
-            alert("Thêm thành công");
-            window.location.href='/admin/list-products'
-          })
-      }
+    const onSubmit = async (product) => {
+        console.log(product);
+        const { data } = await addProduct(product);
+        setProducts([...products, data]);
+        toast.success("Thêm sản phẩm thành công");
+        window.location.href='/admin/list-products'
+
+    }
     return (
         <div className="row container">
             <div className="col-12">
@@ -41,17 +42,6 @@ const AddProduct = () => {
                     <div className="row mb-4">
                         <div className="col">
                             <div className="form-outline">
-                                <label className="form-label" htmlFor="form6Example1">Adress Store</label>
-                                <input type="text" id="form6Example1" className="form-control"  {...register('adress')} />
-
-                            </div>
-                        </div>
-                    
-                    </div>
-                
-                    <div className="row mb-4">
-                        <div className="col">
-                            <div className="form-outline">
                                 <label className="form-label" htmlFor="form6Example1">Price</label>
                                 <input type="number" id="form6Example1" className="form-control"  {...register('price')} />
 
@@ -65,7 +55,7 @@ const AddProduct = () => {
                             </div>
                         </div>
                     </div>
-                  
+
                     <div className="form-outline mb-4">
                         <label className="form-label" htmlFor="form6Example5">Introduce</label>
                         <input type="text" id="form6Example5" className="form-control" {...register('introduce')} />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
 const Header = () => {
-  const hanhdleLogout = () =>{
+  const hanhdleLogout = () => {
     localStorage.removeItem('user');
     sessionStorage.removeItem('token')
   }
@@ -45,27 +45,32 @@ const Header = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-4 clearfix">
-              <div className="logo pull-left">
-                <a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+            <a href="/">
+            <div className="logo">
+                <div className="logo_group">
+                  <img className="img_logo" src="https://www.iconpacks.net/icons/2/free-shopping-bag-icon-2041-thumb.png" />
+                  <h1>Black</h1><h1 className="active_color">Bee</h1>
+                </div>
               </div>
+            </a>
             </div>
             <div className="col-md-8 clearfix">
               <div className="shop-menu clearfix pull-right">
                 <ul className="nav navbar-nav">
-                {user ? (
+                  {user ? (
                     <>
-                    <li><a href=""><i className="fa fa-user" /> {user.name || user.jf}</a></li>
+                      <li><a href=""><i className="fa fa-user" /> {user.name || user.jf}</a></li>
                     </>
                   ) : (
                     <li><a href=""><i className="fa fa-user" /> Account</a></li>
                   )}
-                  
+
                   <li><a href=""><i className="fa fa-star" /> Wishlist</a></li>
                   <li><a href="checkout.html"><i className="fa fa-crosshairs" /> Checkout</a></li>
                   <li><NavLink to="carts"><i className="fa fa-shopping-cart" /> Cart</NavLink></li>
                   {user ? (
                     <>
-                    <li><a href="" onClick={hanhdleLogout} className="" >Logout</a></li>
+                      <li><a href="" onClick={hanhdleLogout} className="" >Logout</a></li>
                     </>
                   ) : (
                     <li><NavLink to="login"><i className="fa fa-lock" /> Login</NavLink></li>
@@ -89,7 +94,7 @@ const Header = () => {
                 </button>
               </div>
               <div className="mainmenu pull-left">
-                <ul className="nav navbar-nav collapse navbar-collapse">
+                <ul className="nav navbar-nav collapse navbar-collapse nav_hover">
                   <li><NavLink to="/" className="active">Home</NavLink></li>
                   <li className="dropdown"><a href="#">Shop<i className="fa fa-angle-down" /></a>
                     <ul role="menu" className="sub-menu">

@@ -1,44 +1,24 @@
-/*-------------------------------------------------------------------
-  ===== Table of Contents =====
 
-  * Bootstrap functions
-  * Template variables
-  * SCSS Compass Functions
-  * Boostrap Main SCSS
-  * Template mixins
-    + Animation Mixins
-    + Background Mixins
-    + Badge Mixins
-    + Button Mixins
-    + Miscellaneous Mixins
-    + BlockQuote Mixins
-    + Cards Mixins
-    + Color Functions Mixins
-  * Core Styles
-    + Reset Styles
-    + Fonts
-    + Functions
-    + Backgrounds
-    + Typography
-    + Miscellaneous
-    + Footer
-    + Layouts
-    + Utilities
-    + Demo styles
-  * Components
-    + Accordions
-    + Buttons
-  * Landing screens
-    + Auth
-    + Lock Screen
--------------------------------------------------------------------*/
-/*-------------------------------------------------------------------*/
-/* === Import Bootstrap functions and variables === */
-/*-------------------------------------------------------------------*/
-/* === Import template variables === */
-/*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+.table th img, .table td img {
+  width: 59px !important;
+  height: 60px !important;
+  border-radius: 0% !important;
+}
+.navbar .navbar-brand-wrapper {
+  background: #cb7474 !important;
+}
+.nav_admin a{
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+}
+.sidebar {
+  background: #cb7474 !important;
 
+}
+.sidebar .nav .nav-item .nav-link {
+  color: #ffffff !important;
+}
 .navbar .navbar-menu-wrapper .navbar-nav .nav-item .nav-link {
 
   font-size: 1.5rem !important;

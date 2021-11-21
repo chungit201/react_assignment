@@ -85,7 +85,7 @@ const Footer = () => {
               <div className="col-sm-2">
                 <div className="single-widget">
                   <h2>Service</h2>
-                  <ul className="nav nav-pills nav-stacked">
+                  <ul className="nav-pills nav-stacked">
                     <li><a href="#">Online Help</a></li>
                     <li><a href="#">Contact Us</a></li>
                     <li><a href="#">Order Status</a></li>
@@ -97,7 +97,7 @@ const Footer = () => {
               <div className="col-sm-2">
                 <div className="single-widget">
                   <h2>Quock Shop</h2>
-                  <ul className="nav nav-pills nav-stacked">
+                  <ul className=" nav-pills nav-stacked">
                     <li><a href="#">T-Shirt</a></li>
                     <li><a href="#">Mens</a></li>
                     <li><a href="#">Womens</a></li>
@@ -109,7 +109,7 @@ const Footer = () => {
               <div className="col-sm-2">
                 <div className="single-widget">
                   <h2>Policies</h2>
-                  <ul className="nav nav-pills nav-stacked">
+                  <ul className=" nav-pills nav-stacked">
                     <li><a href="#">Terms of Use</a></li>
                     <li><a href="#">Privecy Policy</a></li>
                     <li><a href="#">Refund Policy</a></li>
@@ -121,7 +121,7 @@ const Footer = () => {
               <div className="col-sm-2">
                 <div className="single-widget">
                   <h2>About Shopper</h2>
-                  <ul className="nav nav-pills nav-stacked">
+                  <ul className=" nav-pills nav-stacked">
                     <li><a href="#">Company Information</a></li>
                     <li><a href="#">Careers</a></li>
                     <li><a href="#">Store Location</a></li>
