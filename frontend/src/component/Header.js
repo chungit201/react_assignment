@@ -8,11 +8,13 @@ const Header = () => {
   }
   const [user, setUser] = useState();
   useEffect(() => {
-    if (localStorage.getItem('user')) {
+
       const user = JSON.parse(localStorage.getItem('user'));
-      setUser(user);
+      if(user){
+        setUser(user);
+      }
       console.log(user);
-    }
+    
   }, []);
   return (
     <header id="header">{/*header*/}

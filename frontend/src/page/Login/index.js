@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
+import { signin } from '../../api/authApi';
 import BtnLogin from '../../component/BtnLogin'
 
 const LoginPage = () => {
@@ -8,17 +9,10 @@ const LoginPage = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
-    const url = "http://localhost:4000/api/auth/login";
-    fetch(url, {
-      method: "post",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    }).then(response => response.json())
-      .then(data => {
+  const onSubmit =  async(user) => {
+    console.log(user);
+    const {data} = await signin(user)
+        console.log(data);
         if (data) {
           const {user} = data;
           const {tokens} = data
@@ -26,8 +20,6 @@ const LoginPage = () => {
           sessionStorage.setItem('token', JSON.stringify(tokens.access.token));
           window.location.href = '/';
         }
-
-      })
   }
   return (
     <section className="ftco-section">
