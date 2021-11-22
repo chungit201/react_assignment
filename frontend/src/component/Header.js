@@ -8,10 +8,10 @@ const Header = () => {
   }
   const [users, setUser] = useState();
   useEffect(() => {
-    if (localStorage.getItem('user')) {
+    if (localStorage.getItem('user')){
       const user = JSON.parse(localStorage.getItem('user'));
       console.log(user);
-      if (user) {
+      if (user != undefined) {
         setUser(user);
       }
     }
