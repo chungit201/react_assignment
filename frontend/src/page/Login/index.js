@@ -16,15 +16,15 @@ const LoginPage = () => {
     signin({
       email: username,
       password
-    }).then((data) => {
-      console.log(data);
+    }).then((response) => {
+      const {data} = response;
       if (data) {
         const {user,tokens} = data;
-        if(user != undefined ) {
+        if(user) {
           localStorage.setItem('user', JSON.stringify(user));
           sessionStorage.setItem('token', JSON.stringify(tokens.access.token));
+          window.location.href = '/';
         }
-        window.location.href = '/';
       }
     })
   }
