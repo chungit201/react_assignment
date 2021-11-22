@@ -9,13 +9,13 @@ const Header = () => {
   const [account, setAccount] = useState();
   useEffect(() => {
     if (localStorage.getItem('user')){
-      const user = JSON.parse(localStorage.getItem('user'));
-      console.log(user);
-      if (user != undefined) {
-        setAccount(user);
-      }
+      // const user = JSON.parse(localStorage.getItem('user'));
+      // console.log(user);
+      // if (user != undefined) {
+      //   setAccount(user);
+      // }
     }
-    console.log(account);
+    // console.log(account);
   }, []);
   return (
     <header id="header">{/*header*/}
@@ -60,24 +60,24 @@ const Header = () => {
             <div className="col-md-8 clearfix">
               <div className="shop-menu clearfix pull-right">
                 <ul className="nav navbar-nav">
-                  {account ? (
+                  {/* {account ? (
                     <>
                       <li><a href=""><i className="fa fa-user" /> {account.name || account.jf}</a></li>
                     </>
                   ) : (
                     <li><a href=""><i className="fa fa-user" /> Account</a></li>
-                  )}
+                  )} */}
 
                   <li><a href=""><i className="fa fa-star" /> Wishlist</a></li>
                   <li><a href="checkout.html"><i className="fa fa-crosshairs" /> Checkout</a></li>
                   <li><NavLink to="carts"><i className="fa fa-shopping-cart" /> Cart</NavLink></li>
-                  {account ? (
+                  {/* {account ? (
                     <>
                       <li><a href="" onClick={hanhdleLogout} className="" >Logout</a></li>
                     </>
                   ) : (
                     <li><NavLink to="login"><i className="fa fa-lock" /> Login</NavLink></li>
-                  )}
+                  )} */}
                 </ul>
               </div>
             </div>
