@@ -8,12 +8,13 @@ const Header = () => {
   }
   const [user, setUser] = useState();
   useEffect(() => {
+    if (localStorage.getItem('user')) {
       const user = JSON.parse(localStorage.getItem('user'));
-      if(user){
+      if (user) {
         setUser(user);
       }
-      console.log(user);
-    
+    }
+    console.log(user);
   }, []);
   return (
     <header id="header">{/*header*/}
@@ -46,14 +47,14 @@ const Header = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-4 clearfix">
-            <a href="/">
-            <div className="logo">
-                <div className="logo_group">
-                  <img className="img_logo" src="https://www.iconpacks.net/icons/2/free-shopping-bag-icon-2041-thumb.png" />
-                  <h1>Black</h1><h1 className="active_color">Bee</h1>
+              <a href="/">
+                <div className="logo">
+                  <div className="logo_group">
+                    <img className="img_logo" src="https://www.iconpacks.net/icons/2/free-shopping-bag-icon-2041-thumb.png" />
+                    <h1>Black</h1><h1 className="active_color">Bee</h1>
+                  </div>
                 </div>
-              </div>
-            </a>
+              </a>
             </div>
             <div className="col-md-8 clearfix">
               <div className="shop-menu clearfix pull-right">

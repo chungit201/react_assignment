@@ -16,8 +16,10 @@ const LoginPage = () => {
         if (data) {
           const {user} = data;
           const {tokens} = data
-          localStorage.setItem('user', JSON.stringify(user));
-          sessionStorage.setItem('token', JSON.stringify(tokens.access.token));
+          if(user,tokens){
+            localStorage.setItem('user', JSON.stringify(user));
+            sessionStorage.setItem('token', JSON.stringify(tokens.access.token));
+          }
           window.location.href = '/';
         }
   }

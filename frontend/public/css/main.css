@@ -43,6 +43,14 @@ body {
   color: #e52c19 !important;
 
 }
+.breadcrumbs .breadcrumb li a:after {
+  top: 5px !important;
+  left: 40px !important;
+}
+
+.ul, ol, dl {
+  font-size: 13px !important;
+}
 h2.title {
   color: #e52c19 !important;
 }
