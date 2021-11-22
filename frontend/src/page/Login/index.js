@@ -1,27 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { signin } from '../../api/authApi';
-import BtnLogin from '../../component/BtnLogin'
+import BtnLogin from '../../component/BtnLogin';
 
 const LoginPage = () => {
   const {
     register,
     handleSubmit,
   } = useForm();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const onSubmit =  async(user) => {
-    console.log(user);
-    const {data} = await signin(user)
-        console.log(data);
-        if (data) {
-          const {user,tokens} = data;
-          if(user,tokens){
-            localStorage.setItem('user', JSON.stringify(user));
-            sessionStorage.setItem('token', JSON.stringify(tokens.access.token));
-             window.location.href = '/';
-          }
-         
+  const onSubmit = (e) => {
+    e.preventDefault();
+    signin({
+      email: username,
+      password
+    }).then((data) => {
+      console.log(data);
+      if (data) {
+        const {user,tokens} = data;
+        if(user != undefined ) {
+          localStorage.setItem('user', JSON.stringify(user));
+          sessionStorage.setItem('token', JSON.stringify(tokens.access.token));
         }
+        window.location.href = '/';
+      }
+    })
   }
   return (
     <section className="ftco-section">
@@ -48,14 +53,32 @@ const LoginPage = () => {
                     </p>
                   </div>
                 </div>
-                <form className="signin-form" onSubmit={handleSubmit( ()=> onSubmit)}>
+                <form className="signin-form" onSubmit={onSubmit}>
                   <div className="form-group mb-3">
                     <label className="label" htmlFor="name">Username</label>
-                    <input type="text" className="form-control" placeholder="Email" {...register('email')} required />
+                    <input
+                      onKeyDown={e => {
+                        setUsername(e.target.value);
+                      }}
+                      type="text"
+                      className="form-control"
+                      placeholder="Email"
+                      {...register('email')}
+                      required
+                    />
                   </div>
                   <div className="form-group mb-3">
                     <label className="label" htmlFor="password">Password</label>
-                    <input type="password" className="form-control" placeholder="Password" {...register('password', {required: true})} required />
+                    <input
+                      onKeyDown={e => {
+                        setPassword(e.target.value);
+                      }}
+                      type="password"
+                      className="form-control"
+                      placeholder="Password"
+                      {...register('password', {required: true})}
+                      required
+                    />
                   </div>
                   <div className="form-group">
                     <button type="submit" className="form-control btn_login submit px-3">Sign In</button>
