@@ -1,17 +1,14 @@
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form';
-import { signin } from '../../api/authApi';
+import React, {useState} from 'react'
+import {useForm} from 'react-hook-form';
+import {signin} from '../../api/authApi';
 import BtnLogin from '../../component/BtnLogin';
+import {Input} from "antd";
 
 const LoginPage = () => {
-  const {
-    register,
-    handleSubmit,
-  } = useForm();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     signin({
       email: username,
@@ -19,8 +16,8 @@ const LoginPage = () => {
     }).then((response) => {
       const {data} = response;
       if (data) {
-        const {user,tokens} = data;
-        if(user) {
+        const {user, tokens} = data;
+        if (user) {
           localStorage.setItem('user', JSON.stringify(user));
           sessionStorage.setItem('token', JSON.stringify(tokens.access.token));
           window.location.href = '/';
@@ -48,56 +45,56 @@ const LoginPage = () => {
                   </div>
                   <div className="w-100">
                     <p className="social-media d-flex justify-content-end">
-                      <a href="#" className="social-icon d-flex align-items-center justify-content-center"><span className="fa fa-facebook" /></a>
-                      <a href="#" className="social-icon d-flex align-items-center justify-content-center"><span className="fa fa-twitter" /></a>
+                      <a href="#" className="social-icon d-flex align-items-center justify-content-center"><span
+                        className="fa fa-facebook"/></a>
+                      <a href="#" className="social-icon d-flex align-items-center justify-content-center"><span
+                        className="fa fa-twitter"/></a>
                     </p>
                   </div>
                 </div>
-                <form className="signin-form" onSubmit={onSubmit}>
+                <div className="signin-form">
                   <div className="form-group mb-3">
                     <label className="label" htmlFor="name">Username</label>
-                    <input
-                      onKeyDown={e => {
+                    <Input
+                      onChange={e => {
                         setUsername(e.target.value);
                       }}
                       type="text"
                       className="form-control"
                       placeholder="Email"
-                      {...register('email')}
                       required
                     />
                   </div>
                   <div className="form-group mb-3">
                     <label className="label" htmlFor="password">Password</label>
-                    <input
-                      onKeyDown={e => {
+                    <Input
+                      onChange={e => {
                         setPassword(e.target.value);
                       }}
                       type="password"
                       className="form-control"
                       placeholder="Password"
-                      {...register('password', {required: true})}
                       required
                     />
                   </div>
                   <div className="form-group">
-                    <button type="submit" className="form-control btn_login submit px-3">Sign In</button>
+                    <button onClick={handleSubmit} type="submit" className="form-control btn_login submit px-3">Sign In</button>
                   </div>
                   <div className="form-group">
-                     <BtnLogin></BtnLogin>
-                    </div>
+                    <BtnLogin/>
+                  </div>
                   <div className="form-group d-md-flex">
                     <div className="w-50 text-left">
                       <label className="checkbox-wrap checkbox-primary mb-0">Remember Me
-                        <input type="checkbox" defaultChecked />
-                        <span className="checkmark" />
+                        <input type="checkbox" defaultChecked/>
+                        <span className="checkmark"/>
                       </label>
                     </div>
                     <div className="w-50 text-md-right">
                       <a href="#">Forgot Password</a>
                     </div>
                   </div>
-                </form>
+                </div>
               </div>
             </div>
           </div>
