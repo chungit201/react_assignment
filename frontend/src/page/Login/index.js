@@ -14,8 +14,7 @@ const LoginPage = () => {
     const {data} = await signin(user)
         console.log(data);
         if (data) {
-          const {user} = data;
-          const {tokens} = data
+          const {user,tokens} = data;
           if(user,tokens){
             localStorage.setItem('user', JSON.stringify(user));
             sessionStorage.setItem('token', JSON.stringify(tokens.access.token));

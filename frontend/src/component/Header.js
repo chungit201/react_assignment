@@ -6,15 +6,16 @@ const Header = () => {
     localStorage.removeItem('user');
     sessionStorage.removeItem('token')
   }
-  const [user, setUser] = useState();
+  const [users, setUser] = useState();
   useEffect(() => {
     if (localStorage.getItem('user')) {
-      const user = JSON.stringify(localStorage.getItem('user'));
+      const user = JSON.parse(localStorage.getItem('user'));
+      console.log(user);
       if (user) {
         setUser(user);
       }
     }
-    console.log(user);
+    console.log(users);
   }, []);
   return (
     <header id="header">{/*header*/}
@@ -59,9 +60,9 @@ const Header = () => {
             <div className="col-md-8 clearfix">
               <div className="shop-menu clearfix pull-right">
                 <ul className="nav navbar-nav">
-                  {user ? (
+                  {users ? (
                     <>
-                      <li><a href=""><i className="fa fa-user" /> {user.name || user.jf}</a></li>
+                      <li><a href=""><i className="fa fa-user" /> {users.name || users.jf}</a></li>
                     </>
                   ) : (
                     <li><a href=""><i className="fa fa-user" /> Account</a></li>
@@ -70,7 +71,7 @@ const Header = () => {
                   <li><a href=""><i className="fa fa-star" /> Wishlist</a></li>
                   <li><a href="checkout.html"><i className="fa fa-crosshairs" /> Checkout</a></li>
                   <li><NavLink to="carts"><i className="fa fa-shopping-cart" /> Cart</NavLink></li>
-                  {user ? (
+                  {users ? (
                     <>
                       <li><a href="" onClick={hanhdleLogout} className="" >Logout</a></li>
                     </>
