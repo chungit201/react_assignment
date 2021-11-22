@@ -51,7 +51,7 @@ const LoginPage = () => {
                     </p>
                   </div>
                 </div>
-                <div className="signin-form">
+                <form onSubmit={handleSubmit} className="signin-form">
                   <div className="form-group mb-3">
                     <label className="label" htmlFor="name">Username</label>
                     <Input
@@ -77,7 +77,7 @@ const LoginPage = () => {
                     />
                   </div>
                   <div className="form-group">
-                    <button onClick={handleSubmit} type="submit" className="form-control btn_login submit px-3">Sign In</button>
+                    <button type="submit" className="form-control btn_login submit px-3">Sign In</button>
                   </div>
                   <div className="form-group">
                   </div>
@@ -92,7 +92,7 @@ const LoginPage = () => {
                       <a href="#">Forgot Password</a>
                     </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
