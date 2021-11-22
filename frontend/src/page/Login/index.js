@@ -48,7 +48,7 @@ const LoginPage = () => {
                     </p>
                   </div>
                 </div>
-                <form className="signin-form" onSubmit={handleSubmit(onSubmit)}>
+                <form className="signin-form" onSubmit={handleSubmit( ()=> onSubmit)}>
                   <div className="form-group mb-3">
                     <label className="label" htmlFor="name">Username</label>
                     <input type="text" className="form-control" placeholder="Email" {...register('email')} required />
