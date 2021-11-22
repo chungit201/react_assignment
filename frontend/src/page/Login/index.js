@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {signin} from '../../api/authApi';
-import BtnLogin from '../../component/BtnLogin';
+
 import {Input} from "antd";
 
 const LoginPage = () => {
@@ -80,7 +80,6 @@ const LoginPage = () => {
                     <button onClick={handleSubmit} type="submit" className="form-control btn_login submit px-3">Sign In</button>
                   </div>
                   <div className="form-group">
-                    <BtnLogin/>
                   </div>
                   <div className="form-group d-md-flex">
                     <div className="w-50 text-left">
