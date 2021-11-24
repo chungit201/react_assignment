@@ -15,6 +15,8 @@ import AdminPage from './page/Admin/AdminPage';
 import ProductAdminPage from './page/Admin/ProductAdminPage';
 import AddProduct from './component/admin/AddProducts';
 import ProductDetail from './page/ProductDetail/ProductDetail';
+import CategoriesAmin from './page/Admin/CategoriesAmin';
+import AddCategories from './component/admin/AddCategories';
 function App() {
   return (
     <div className="App">
@@ -26,6 +28,7 @@ function App() {
             <Route path='products' element={<ProductPage />} />
             <Route path='carts' element={<CartPage />} />
             <Route path="products/:id" element={<ProductDetail/>} />
+            <Route path="login" element={<LoginPage />} />
           </Route>
 
           {/* LayoutAdmin */}
@@ -33,10 +36,11 @@ function App() {
             <Route index element={<AdminPage />} />
             <Route path='list-products' element={<ProductAdminPage />} />
             <Route path='add-products' element={<AddProduct />} />
-
+            <Route path='list-categories' element={<CategoriesAmin/>}/>
+            <Route path='addCategory' element={<AddCategories/>} />
           </Route>
-
-          <Route path="login" element={<LoginPage />} />
+        
+      
           {/* <Route path="err-500" element={<ServeErrorPage />} />
           <Route path="register" element={<RegisterPage />} /> */}
         </Routes>

@@ -339,7 +339,6 @@ h3.price {
 .btn-group,
 .btn-group-vertical {
     position: relative;
-    display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
     vertical-align: middle;

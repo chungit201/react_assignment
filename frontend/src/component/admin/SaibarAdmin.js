@@ -25,10 +25,10 @@ const SaibarAdmin = () => {
             </a>
           </li>
           <li className="nav_admin">
-            <a className="nav-link" href="pages/forms/basic_elements.html">
+            <NavLink className="nav-link" to="list-categories">
               <span className="icon-bg"><i className="mdi mdi-format-list-bulleted menu-icon" /></span>
               <span className="menu-title"> Categories</span>
-            </a>
+            </NavLink>
           </li>
           <li className="nav_admin">
             <a className="nav-link" href="pages/charts/chartjs.html">

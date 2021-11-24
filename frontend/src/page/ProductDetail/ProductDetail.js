@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { get } from '../../api/productApi';
 import { Button } from 'react-bootstrap';
 import Sidebar from '../../component/Sidebar';
+
 const ProductDetail = () => {
   const [product, setProduct] = useState();
   const { id } = useParams();
@@ -12,16 +13,14 @@ const ProductDetail = () => {
     const getProduct = async () => {
       try {
         const { data } = await get(id);
-        console.log(data);
         setProduct(data);
       } catch (error) {
         //window.location.href= '/err-500';
       }
     }
     getProduct();
-  }, [])
+  }, []);
   return (
-
     <div className="container box_detail">
       <div className="row">
         <Sidebar></Sidebar>

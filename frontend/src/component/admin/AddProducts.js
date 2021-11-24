@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import { useForm } from 'react-hook-form';
 import { addProduct } from '../../api/productApi';
 import { ToastContainer, toast } from "react-toastify";
+import {getAll} from "../../api/categoriesApi";
 const AddProduct = () => {
     const [products, setProducts] = useState([]);
     const {
@@ -14,9 +15,13 @@ const AddProduct = () => {
         const { data } = await addProduct(product);
         setProducts([...products, data]);
         toast.success("Thêm sản phẩm thành công");
-        window.location.href='/admin/list-products'
-
+        window.location.href='/admin/list-products';
     }
+    useEffect(()=>{
+        const getCategories =  async () =>{
+            const {data} = await getAll()
+        }
+    },[])
     return (
         <div className="row container">
             <div className="col-12">
