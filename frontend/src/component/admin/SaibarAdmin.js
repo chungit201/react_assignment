@@ -48,7 +48,7 @@ const SaibarAdmin = () => {
               <span className="menu-title">User Pages</span>
               <i className="menu-arrow" />
             </a>
-          </li>
+          </li><hr/>
           <li className="nav_admin sidebar-user-actions">
             <div className="sidebar-user-menu">
               <a href="#" className="nav-link"><i className="mdi mdi-settings menu-icon" />

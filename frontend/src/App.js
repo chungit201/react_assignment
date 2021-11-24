@@ -14,6 +14,7 @@ import LayoutAdmin from './component/admin/LayoutAdmin';
 import AdminPage from './page/Admin/AdminPage';
 import ProductAdminPage from './page/Admin/ProductAdminPage';
 import AddProduct from './component/admin/AddProducts';
+import ProductDetail from './page/ProductDetail/ProductDetail';
 function App() {
   return (
     <div className="App">
@@ -24,7 +25,7 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path='products' element={<ProductPage />} />
             <Route path='carts' element={<CartPage />} />
-
+            <Route path="products/:id" element={<ProductDetail/>} />
           </Route>
 
           {/* LayoutAdmin */}
