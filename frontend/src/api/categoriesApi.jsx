@@ -1,7 +1,7 @@
 import instance from "./instance";
 
 export const addCategory = (category) => {
-    const url = "/categories/add";
+    const url = '/categories/add';
     return instance.post(url,category);
 }
 

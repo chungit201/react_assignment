@@ -28,7 +28,8 @@ const ProductDetail = () => {
           <img className="img_detail" src={product && product.img} />
         </div>
         <div className="col-6">
-          <h2>{product && product.name}</h2>
+            <div className="introduct">
+            <h2>{product && product.name}</h2>
           <h3 className="price"><NumberFormat thousandSeparator={true} thousandsGroupStyle="vnd"
             value={product && product.price} suffix={' VND'} /></h3>
           <span>Hướng dẫn chọn size:</span>
@@ -48,6 +49,7 @@ const ProductDetail = () => {
             <Button variant="outline-danger">Thêm vào giỏ hàng</Button>{' '}
             <Button variant="outline-dark" >Mua ngay</Button>{' '}
           </div>
+            </div>
         </div>
       </div>
     </div>

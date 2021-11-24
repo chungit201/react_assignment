@@ -11,6 +11,13 @@ body {
     position: relative;
     font-size: 1.5rem !important;
     color: #121416 !important;
+};
+.introduct {
+    width: 380px;
+    margin-left: 118px;
+}
+.introduct{
+    margin-left: 40px;
 }
 .list-size {
     margin-top: 10px;
