@@ -4,6 +4,8 @@ import { addProduct } from '../../api/productApi';
 import { ToastContainer, toast } from "react-toastify";
 import { getAll } from "../../api/categoriesApi";
 import { Form } from 'react-bootstrap';
+import { storage } from '../../firebase/firebase';
+
 const AddProduct = () => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState();
@@ -25,11 +27,32 @@ const AddProduct = () => {
   } = useForm();
 
   const onSubmit = async (product) => {
-    console.log(product);
-    const { data } = await addProduct(product);
-    setProducts([...products, data]);
-    toast.success("Thêm sản phẩm thành công");
-    window.location.href = '/admin/list-products';
+    console.log(product.img[0]);
+    const image = product.img[0];
+    const ref = storage.ref(`images/${image.name}`);
+    const upload = ref.put(image);
+    upload.on(
+      "state_changed",
+      snapshot => { },
+      error => {
+        console.log(error);
+      }, () => {
+        storage.ref('images')
+          .child(image.name)
+          .getDownloadURL()
+          .then( async(url) => {
+            const dataProduct = {
+              name: product.name,
+              price: product.price,
+              img: url,
+              description: product.description,
+              quantity: product.quantity
+            }
+            const {data} = await addProduct(dataProduct)
+            console.log(dataProduct);
+          })
+      }
+    )
   }
   return (
     <div className="row container">
@@ -68,15 +91,15 @@ const AddProduct = () => {
             <div className="col">
               <div className="form-outline">
                 <label className="form-label" htmlFor="form6Example2">Image</label>
-                <input type="text" id="form6Example2" className="form-control" {...register('img')} />
+                <input type="file" id="form6Example2" className="form-control" {...register('img')} />
 
               </div>
             </div>
           </div>
 
           <div className="form-outline mb-4">
-            <label className="form-label" htmlFor="form6Example5">Introduce</label>
-            <input type="text" id="form6Example5" className="form-control" {...register('introduce')} />
+            <label className="form-label" htmlFor="form6Example5">Quantity</label>
+            <input type="number" id="form6Example5" className="form-control" {...register('quantity')} />
 
           </div>
           <div className="form-outline mb-4">

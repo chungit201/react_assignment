@@ -1,21 +1,20 @@
-import React, {useState} from 'react'
-import {signin} from '../../api/authApi';
-
-import {Input} from "antd";
+import React, { useState } from 'react'
+import { signin } from '../../api/authApi';
+import 'react-notifications/lib/notifications.css';
+import { Input } from "antd";
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const handleSubmit = (e) => {
     e.preventDefault();
     signin({
       email: username,
       password
     }).then((response) => {
-      const {data} = response;
+      const { data } = response;
       if (data) {
-        const {user, tokens} = data;
+        const { user, tokens } = data;
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
           sessionStorage.setItem('token', JSON.stringify(tokens.access.token));
@@ -45,9 +44,9 @@ const LoginPage = () => {
                   <div className="w-100">
                     <p className="social-media d-flex justify-content-end">
                       <a href="#" className="social-icon d-flex align-items-center justify-content-center"><span
-                        className="fa fa-facebook"/></a>
+                        className="fa fa-facebook" /></a>
                       <a href="#" className="social-icon d-flex align-items-center justify-content-center"><span
-                        className="fa fa-twitter"/></a>
+                        className="fa fa-twitter" /></a>
                     </p>
                   </div>
                 </div>
@@ -84,8 +83,8 @@ const LoginPage = () => {
                   <div className="form-group d-md-flex">
                     <div className="w-50 text-left">
                       <label className="checkbox-wrap checkbox-primary mb-0">Remember Me
-                        <input type="checkbox" defaultChecked/>
-                        <span className="checkmark"/>
+                        <input type="checkbox" defaultChecked />
+                        <span className="checkmark" />
                       </label>
                     </div>
                     <div className="w-50 text-md-right">

@@ -16,6 +16,6 @@ export const get = (id) =>{
 }
 
 export const remove = (id) =>{
-    const url = "/categories" + id;
-    return instance.post(url)
+    const url = "/categories/delete/" + id;
+    return instance.post(url);
 }
