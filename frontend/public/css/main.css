@@ -5,13 +5,16 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,500,700,100);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
 @import url(http://fonts.googleapis.com/css?family=Abel);
-
+select.form-select.form-select-lg {
+    height: 45px !important;
+}
 body {
     font-family: 'Roboto', sans-serif !important;
     position: relative;
     font-size: 1.5rem !important;
     color: #121416 !important;
 };
+
 .introduct {
     width: 380px;
     margin-left: 118px;

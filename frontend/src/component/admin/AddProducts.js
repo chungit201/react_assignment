@@ -7,6 +7,57 @@ import { Form } from 'react-bootstrap';
 import { storage } from '../../firebase/firebase';
 
 const AddProduct = () => {
+  const [position, setPosition] = React.useState("top-right");
+  const [alerts, setAlerts] = React.useState([]);
+  const [alertTimeout, setAlertTimeout] = React.useState(0);
+  const [newMessage, setNewMessage] = React.useState(
+    "This is a test of the Emergency Broadcast System. This is only a test."
+  );
+
+  const generate = React.useCallback(
+    type => {
+      setAlerts(alerts => [
+        ...alerts,
+        {
+          id: new Date().getTime(),
+          type: type,
+          headline: `Whoa, ${type}!`,
+          message: newMessage
+        }
+      ]);
+    },
+    [newMessage]
+  );
+
+  const onDismissed = React.useCallback(alert => {
+    setAlerts(alerts => {
+      const idx = alerts.indexOf(alert);
+      if (idx < 0) return alerts;
+      return [...alerts.slice(0, idx), ...alerts.slice(idx + 1)];
+    });
+  }, []);
+
+  const clearAlerts = React.useCallback(() => setAlerts([]), []);
+  const onTimeoutChange = React.useCallback(
+    ({ target: { value } }) => setAlertTimeout(+value * 1000),
+    []
+  );
+
+  const onNewMessageChange = React.useCallback(
+    ({ target: { value } }) => setNewMessage(value),
+    []
+  );
+
+  const onPositionChange = React.useCallback(
+    ({ target: { value } }) => setPosition(value),
+    []
+  );
+
+  const clearAllButton = alerts.length ? (
+    <button className="btn btn-link" onClick={clearAlerts}>
+      Clear all alerts
+    </button>
+  ) : null;
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState();
   useEffect(() => {
@@ -27,6 +78,7 @@ const AddProduct = () => {
   } = useForm();
 
   const onSubmit = async (product) => {
+    console.log(product);
     console.log(product.img[0]);
     const image = product.img[0];
     const ref = storage.ref(`images/${image.name}`);
@@ -40,7 +92,7 @@ const AddProduct = () => {
         storage.ref('images')
           .child(image.name)
           .getDownloadURL()
-          .then( async(url) => {
+          .then(async (url) => {
             const dataProduct = {
               name: product.name,
               price: product.price,
@@ -48,7 +100,8 @@ const AddProduct = () => {
               description: product.description,
               quantity: product.quantity
             }
-            const {data} = await addProduct(dataProduct)
+            const { data } = await addProduct(dataProduct);
+            generate('success')
             console.log(dataProduct);
           })
       }
@@ -66,7 +119,7 @@ const AddProduct = () => {
                 {/* <select type="text" id="form6Example1" className="form-control" {...register('categories')} /> */}
                 <Form.Select aria-label="Default select example" size="lg">
                   {category && (category.results.map(item => {
-                    return <option value={item.id}>{item.name}</option>
+                    return <option  {...register('categories')} value={item.id}>{item.name}</option>
                   }))}
                 </Form.Select>
               </div>
