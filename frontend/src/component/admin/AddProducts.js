@@ -1,63 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { addProduct } from '../../api/productApi';
-import { ToastContainer, toast } from "react-toastify";
 import { getAll } from "../../api/categoriesApi";
 import { Form } from 'react-bootstrap';
 import { storage } from '../../firebase/firebase';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddProduct = () => {
-  const [position, setPosition] = React.useState("top-right");
-  const [alerts, setAlerts] = React.useState([]);
-  const [alertTimeout, setAlertTimeout] = React.useState(0);
-  const [newMessage, setNewMessage] = React.useState(
-    "This is a test of the Emergency Broadcast System. This is only a test."
-  );
-
-  const generate = React.useCallback(
-    type => {
-      setAlerts(alerts => [
-        ...alerts,
-        {
-          id: new Date().getTime(),
-          type: type,
-          headline: `Whoa, ${type}!`,
-          message: newMessage
-        }
-      ]);
-    },
-    [newMessage]
-  );
-
-  const onDismissed = React.useCallback(alert => {
-    setAlerts(alerts => {
-      const idx = alerts.indexOf(alert);
-      if (idx < 0) return alerts;
-      return [...alerts.slice(0, idx), ...alerts.slice(idx + 1)];
-    });
-  }, []);
-
-  const clearAlerts = React.useCallback(() => setAlerts([]), []);
-  const onTimeoutChange = React.useCallback(
-    ({ target: { value } }) => setAlertTimeout(+value * 1000),
-    []
-  );
-
-  const onNewMessageChange = React.useCallback(
-    ({ target: { value } }) => setNewMessage(value),
-    []
-  );
-
-  const onPositionChange = React.useCallback(
-    ({ target: { value } }) => setPosition(value),
-    []
-  );
-
-  const clearAllButton = alerts.length ? (
-    <button className="btn btn-link" onClick={clearAlerts}>
-      Clear all alerts
-    </button>
-  ) : null;
+  const notify = () => toast.success("Add products success fully!");
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState();
   useEffect(() => {
@@ -78,34 +29,35 @@ const AddProduct = () => {
   } = useForm();
 
   const onSubmit = async (product) => {
-    console.log(product);
-    console.log(product.img[0]);
-    const image = product.img[0];
-    const ref = storage.ref(`images/${image.name}`);
-    const upload = ref.put(image);
-    upload.on(
-      "state_changed",
-      snapshot => { },
-      error => {
-        console.log(error);
-      }, () => {
-        storage.ref('images')
-          .child(image.name)
-          .getDownloadURL()
-          .then(async (url) => {
-            const dataProduct = {
-              name: product.name,
-              price: product.price,
-              img: url,
-              description: product.description,
-              quantity: product.quantity
-            }
-            const { data } = await addProduct(dataProduct);
-            generate('success')
-            console.log(dataProduct);
-          })
-      }
-    )
+    notify();
+    // console.log(product.img[0]);
+    // const image = product.img[0];
+    // const ref = storage.ref(`images/${image.name}`);
+    // const upload = ref.put(image);
+    // upload.on(
+    //   "state_changed",
+    //   snapshot => { },
+    //   error => {
+    //     console.log(error);
+    //   }, () => {
+    //     storage.ref('images')
+    //       .child(image.name)
+    //       .getDownloadURL()
+    //       .then(async (url) => {
+    //         const dataProduct = {
+    //           name: product.name,
+    //           price: product.price,
+    //           img: url,
+    //           description: product.description,
+    //           quantity: product.quantity
+    //         }
+    //         const { data } = await addProduct(dataProduct);
+    //         notify();
+    //         window.location.href='/admin/list-products'
+    //         console.log(dataProduct);
+    //       })
+    //   }
+    // )
   }
   return (
     <div className="row container">
@@ -160,6 +112,8 @@ const AddProduct = () => {
             <textarea className="form-control" id="form6Example7" rows={4} defaultValue={""} {...register('description')} />
           </div>
           <button type="submit" className="btn btn-primary btn-block mb-4">Save</button>
+          <ToastContainer 
+          />
         </form>
       </div>
     </div>

@@ -7,7 +7,7 @@ const Products = ({products}) => {
     return (
         <div className="col-sm-9 padding-right">
         <div className="features_items">{/*features_items*/}
-          <h2 className="title text-center">Features Items</h2>
+          <h2 className="title text-center">NEW ARRIVALS</h2>
           {products && ( products.results.map((item) => (
                       <Product product={item}/>
                     )))}

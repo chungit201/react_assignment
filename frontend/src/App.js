@@ -18,6 +18,7 @@ import AddProduct from './component/admin/AddProducts';
 import ProductDetail from './page/ProductDetail/ProductDetail';
 import CategoriesAmin from './page/Admin/CategoriesAmin';
 import AddCategories from './component/admin/AddCategories';
+
 function App() {
   return (
     <div className="App">
@@ -41,7 +42,6 @@ function App() {
             <Route path='addCategory' element={<AddCategories/>} />
           </Route>
         
-      
           {/* <Route path="err-500" element={<ServeErrorPage />} />
           <Route path="register" element={<RegisterPage />} /> */}
         </Routes>

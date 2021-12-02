@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
+import { isAuthentication } from '../ultils.js'
 import NavbarAdmin from './NavbarAdmin'
 import SaibarAdmin from './SaibarAdmin'
 const LayoutAdmin = () => {
-  
+  useEffect(()=>{
+    isAuthentication();
+  },[])
   return (
     <div className="container-scroller">
       <NavbarAdmin/>

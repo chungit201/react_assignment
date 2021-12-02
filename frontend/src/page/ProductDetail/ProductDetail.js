@@ -39,7 +39,7 @@ const ProductDetail = () => {
               <a href="" className="nofollow">XL</a>
               <div className="quantity">
                 <p>Số lượng :</p>
-                <input className="ip_quantity" type="number" />
+                <input className="ip_quantity" type="number" defaultValue={1} />
               </div>
             </div>
 

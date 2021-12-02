@@ -14,7 +14,10 @@ body {
     font-size: 1.5rem !important;
     color: #121416 !important;
 };
-
+input.ip_quantity {
+    width: 60px !important;
+    height: 25px !important;
+}
 .introduct {
     width: 380px;
     margin-left: 118px;
@@ -32,6 +35,24 @@ body {
     border: 1px solid #ddd;
     width: 40px;
 };
+
+.category-products .panel-default .panel-heading .panel-title {
+    border-bottom: 1px solid rgb(243, 237, 237) !important; 
+}
+.category-products .panel-default .panel-heading .panel-title a{
+    padding: 1.5rem 2rem !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #696763;
+    text-align: center !important;
+}
+.category-products .panel-default .panel-heading .panel-title a:hover{
+    color: rgb(108, 238, 177);
+    text-decoration: underline !important;
+}
+
+
 input.ip_quantity {
     border: 1px solid #121416 !important;
 }
@@ -6005,6 +6026,7 @@ ul.sub-menu {
 
 #footer {
     background: #282828 !important;
+    margin-top: 40px;
 }
 
 .footer-top .container {
