@@ -30,34 +30,34 @@ const AddProduct = () => {
 
   const onSubmit = async (product) => {
     notify();
-    // console.log(product.img[0]);
-    // const image = product.img[0];
-    // const ref = storage.ref(`images/${image.name}`);
-    // const upload = ref.put(image);
-    // upload.on(
-    //   "state_changed",
-    //   snapshot => { },
-    //   error => {
-    //     console.log(error);
-    //   }, () => {
-    //     storage.ref('images')
-    //       .child(image.name)
-    //       .getDownloadURL()
-    //       .then(async (url) => {
-    //         const dataProduct = {
-    //           name: product.name,
-    //           price: product.price,
-    //           img: url,
-    //           description: product.description,
-    //           quantity: product.quantity
-    //         }
-    //         const { data } = await addProduct(dataProduct);
-    //         notify();
-    //         window.location.href='/admin/list-products'
-    //         console.log(dataProduct);
-    //       })
-    //   }
-    // )
+    console.log(product.img[0]);
+    const image = product.img[0];
+    const ref = storage.ref(`images/${image.name}`);
+    const upload = ref.put(image);
+    upload.on(
+      "state_changed",
+      snapshot => { },
+      error => {
+        console.log(error);
+      }, () => {
+        storage.ref('images')
+          .child(image.name)
+          .getDownloadURL()
+          .then(async (url) => {
+            const dataProduct = {
+              name: product.name,
+              price: product.price,
+              img: url,
+              description: product.description,
+              quantity: product.quantity
+            }
+            const { data } = await addProduct(dataProduct);
+            notify();
+            window.location.href='/admin/list-products'
+            console.log(dataProduct);
+          })
+      }
+    )
   }
   return (
     <div className="row container">

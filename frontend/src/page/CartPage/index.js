@@ -13,7 +13,7 @@ const CartPage = () => {
                     </ol>
                 </div>
                 <TableCart></TableCart>
-                <Pay></Pay>
+                
             </div>
         </section>
     )

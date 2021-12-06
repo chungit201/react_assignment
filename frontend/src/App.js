@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import 'react-notifications-component/dist/theme.css'
 // import './App.css';
 import {
@@ -18,8 +18,24 @@ import AddProduct from './component/admin/AddProducts';
 import ProductDetail from './page/ProductDetail/ProductDetail';
 import CategoriesAmin from './page/Admin/CategoriesAmin';
 import AddCategories from './component/admin/AddCategories';
-
+import OderPage from './page/OderPage';
+import firebase from './firebase/firebase';
 function App() {
+  useEffect(() => {
+    getDeviceTokens();
+  }, [])
+  const getDeviceTokens = async () => {
+    try {
+      const messaging = firebase.messaging();
+      await messaging.requestPermission();
+      const token = await messaging.getToken();
+      localStorage.setItem('deviceToken', JSON.stringify(token));
+      console.log('token:', token);
+      return token;
+    } catch (error) {
+      console.error(error);
+    }
+  }
   return (
     <div className="App">
       <BrowserRouter>
@@ -29,7 +45,8 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path='products' element={<ProductPage />} />
             <Route path='carts' element={<CartPage />} />
-            <Route path="products/:id" element={<ProductDetail/>} />
+            <Route path="products/:id" element={<ProductDetail />} />
+            <Route path="checkout/:price" element={<OderPage />} />
             <Route path="login" element={<LoginPage />} />
           </Route>
 
@@ -38,10 +55,10 @@ function App() {
             <Route index element={<AdminPage />} />
             <Route path='list-products' element={<ProductAdminPage />} />
             <Route path='add-products' element={<AddProduct />} />
-            <Route path='list-categories' element={<CategoriesAmin/>}/>
-            <Route path='addCategory' element={<AddCategories/>} />
+            <Route path='list-categories' element={<CategoriesAmin />} />
+            <Route path='addCategory' element={<AddCategories />} />
           </Route>
-        
+
           {/* <Route path="err-500" element={<ServeErrorPage />} />
           <Route path="register" element={<RegisterPage />} /> */}
         </Routes>

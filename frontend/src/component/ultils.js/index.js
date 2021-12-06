@@ -4,3 +4,16 @@ export const isAuthentication = () =>{
         window.location.href='/login';
     }
 }
+
+export const getCarts = () => {
+    if(typeof window=='undefined'){
+        return false;
+    }
+    if(localStorage.getItem('carts')){
+        return JSON.parse(localStorage.getItem('carts'));
+
+    }else{
+        return false;
+    }
+    
+}

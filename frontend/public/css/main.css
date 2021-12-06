@@ -18,6 +18,15 @@ input.ip_quantity {
     width: 60px !important;
     height: 25px !important;
 }
+label {
+    font-size: 1.5rem !important;
+}
+.total_area ul li {
+    font-size: 1.5rem !important;
+}
+#do_action {
+    margin-top: 40px;
+}
 .introduct {
     width: 380px;
     margin-left: 118px;
@@ -68,13 +77,43 @@ input.ip_quantity {
 .group_view{
     margin-bottom: 100px;
 }
-
+.fa-shopping-cart{
+    position: absolute;
+    margin-right: 20px;
+}
+i.fa.fa-shopping-cart {
+    right: 25px !important;
+}
+.total-cart{
+    width: 13px;
+    height: 13px;
+    text-align: center;
+    background: red;
+    border-radius: 50%;
+    position: relative;
+    top: -28px;
+    right: 9px;
+}
+.total-cart span{
+    position: relative;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgb(243, 237, 237);
+    bottom: 3px;
+}
 .active_color {
     color: #6b00b3;
+}
+.group_btn {
+    display: flex;
+}
+.group_btn button{
+    margin-right: 10px;
 }
 
 .img_logo {
     height: 18px;
+    
 }
 
 .logo_group {

@@ -1,98 +1,69 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import { Table } from 'react-bootstrap'
+import { getCarts } from '../../component/ultils.js';
+import Pay from './Pay.js';
 const TableCart = () => {
+    let total = 0
+    const [totalPrice, setTotalPrice] = useState();
+    const [totalProduct,setTotalProduct] = useState(0)
+    const [carts, setCarts] = useState();
+    useEffect(() => {
+        getAll();
+    }, [])
+    const getAll = async () => {
+        const data = await getCarts();
+        setTotalProduct(data.length)
+        data.map(item=>{
+            console.log(item.price);
+            setTotalPrice(total+=item.price)
+            console.log();
+        })
+        setCarts(data);
+    }
+    const handelRemove = async(id)=>{
+        console.log(id);
+        const newCart = carts.filter(item => item.id !== id);
+        localStorage.setItem('carts', JSON.stringify(newCart))
+        window.location.reload();
+    }
     return (
-        <div className="table-responsive cart_info">
-            <table className="table table-condensed">
-                <thead>
-                    <tr className="cart_menu">
-                        <td className="image">Item</td>
-                        <td className="description" />
-                        <td className="price">Price</td>
-                        <td className="quantity">Quantity</td>
-                        <td className="total">Total</td>
-                        <td />
+        <>
+        <Table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Số tiền</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {carts && (carts.map((item, index = 1) => {
+                    
+                    index++
+                    return <tr>
+                        <td>
+                            {index}
+                        </td>
+                        <td>
+                            <a href="">{item.name}</a>
+                            <img src={item.image} />
+                        </td>
+                        <td>{item.price}</td>
+                        <td><input type="number" defaultValue={item.quantity} min={1} max={100}></input></td>
+                        <td>{item.price * item.quantity}</td>
+                        <td><i onClick={()=>handelRemove(item.id)} class="fas fa-trash"></i></td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td className="cart_product">
-                            <a href><img src="images/cart/one.png" alt="" /></a>
-                        </td>
-                        <td className="cart_description">
-                            <h4><a href>Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td className="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td className="cart_quantity">
-                            <div className="cart_quantity_button">
-                                <a className="cart_quantity_up" href> + </a>
-                                <input className="cart_quantity_input" type="text" name="quantity" defaultValue={1} autoComplete="off" size={2} />
-                                <a className="cart_quantity_down" href> - </a>
-                            </div>
-                        </td>
-                        <td className="cart_total">
-                            <p className="cart_total_price">$59</p>
-                        </td>
-                        <td className="cart_delete">
-                            <a className="cart_quantity_delete" href><i className="fa fa-times" /></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="cart_product">
-                            <a href><img src="images/cart/two.png" alt="" /></a>
-                        </td>
-                        <td className="cart_description">
-                            <h4><a href>Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td className="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td className="cart_quantity">
-                            <div className="cart_quantity_button">
-                                <a className="cart_quantity_up" href> + </a>
-                                <input className="cart_quantity_input" type="text" name="quantity" defaultValue={1} autoComplete="off" size={2} />
-                                <a className="cart_quantity_down" href> - </a>
-                            </div>
-                        </td>
-                        <td className="cart_total">
-                            <p className="cart_total_price">$59</p>
-                        </td>
-                        <td className="cart_delete">
-                            <a className="cart_quantity_delete" href><i className="fa fa-times" /></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td className="cart_product">
-                            <a href><img src="images/cart/three.png" alt="" /></a>
-                        </td>
-                        <td className="cart_description">
-                            <h4><a href>Colorblock Scuba</a></h4>
-                            <p>Web ID: 1089772</p>
-                        </td>
-                        <td className="cart_price">
-                            <p>$59</p>
-                        </td>
-                        <td className="cart_quantity">
-                            <div className="cart_quantity_button">
-                                <a className="cart_quantity_up" href> + </a>
-                                <input className="cart_quantity_input" type="text" name="quantity" defaultValue={1} autoComplete="off" size={2} />
-                                <a className="cart_quantity_down" href> - </a>
-                            </div>
-                        </td>
-                        <td className="cart_total">
-                            <p className="cart_total_price">$59</p>
-                        </td>
-                        <td className="cart_delete">
-                            <a className="cart_quantity_delete" href><i className="fa fa-times" /></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                }))}
+
+            </tbody>
+        </Table>
+        <Pay totalPrice= {totalPrice} sum={totalProduct} ></Pay>
+        </>
+        
     )
 }
 

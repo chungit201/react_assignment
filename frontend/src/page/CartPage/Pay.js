@@ -1,6 +1,8 @@
 import React from 'react'
 
-const Pay = () => {
+const Pay = (props) => {
+    const shipping = 35000
+    console.log(props);
     return (
         <section id="do_action">
             <div className="container">
@@ -64,13 +66,20 @@ const Pay = () => {
                     <div className="col-sm-6">
                         <div className="total_area">
                             <ul>
-                                <li>Cart Sub Total <span>$59</span></li>
-                                <li>Eco Tax <span>$2</span></li>
-                                <li>Shipping Cost <span>Free</span></li>
-                                <li>Total <span>$61</span></li>
+                                <li>Tổng tiền <span>{props.totalPrice}</span></li>
+                                <li>Thuế <span>$0</span></li>
+                                <li>Vận chuyển <span>{shipping}</span></li>
+                                <li>Tổng thanh toán ({props.sum})<span>{props.totalPrice + shipping}</span></li>
+
                             </ul>
-                            <a className="btn btn-default update" href>Update</a>
-                            <a className="btn btn-default check_out" href>Check Out</a>
+                            <li style={{listStyle:"none",marginLeft:"10px"}}>
+                               
+                                <label></label>
+
+                            </li>
+                           
+                            <a className="btn btn-default update" href="checkout"style={{ background: 'red' }}>Update</a>
+                            <a className="btn btn-default check_out" href={`checkout/${props.totalPrice+shipping}`} style={{ background: 'blue' }}>Check Out</a>
                         </div>
                     </div>
                 </div>
