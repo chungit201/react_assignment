@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import NumberFormat from 'react-number-format';
 import { useParams } from 'react-router';
 import { addOder } from '../../api/oderApi.jsx';
+import { sendOne } from '../../api/push-notification.jsx';
 import { getCarts } from '../../component/ultils.js';
 const OderPage = () => {
     const { price } = useParams();
@@ -15,6 +16,10 @@ const OderPage = () => {
     const [note, setNote] = useState();
     useEffect(() => {
         getOders();
+        if(!sessionStorage.getItem('token')){
+            alert("Vui lòng đăng nhập")
+            window.location.href = '/login'
+        }
     }, [])
     const getOders = async () => {
         const data = await getCarts();
@@ -30,8 +35,20 @@ const OderPage = () => {
            note:note,
            products: carts
        };
-       const {data} = await addOder(oders);
+       const {data} = await addOder(oders)
        console.log(data);
+       const notification = {
+        "title": "BlackBee",
+         "body": "Đã có thêm một đơn hàng mới",
+         "click_action": "http://localhost:3000/admin/list-oders",
+         "icon": "https://www.iconpacks.net/icons/2/free-shopping-bag-icon-2041-thumb.png",
+         "to": "eSTEqpubcsnTHLGD8Ymbbr:APA91bGhzyTGXF-JYKL8vfSi6bYL3EZoF3xFH6JTdMI2Vsp10_op130DLyQN8nN5HT9wbBKbdeVXaRD07DMs3_WkB72Cj6wWfUQvZi41n4YhUQk8SondFle6i1SawDahAnYB0Sp4hPQz"
+        }
+        const push = await sendOne(notification);
+       if(data){
+           window.location.href = '/oder'
+       }
+      
    }
     return (
         <div className="checkout">

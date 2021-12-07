@@ -18,6 +18,12 @@ const SaibarAdmin = () => {
             </NavLink>
           </li>
           <li className="nav_admin">
+            <NavLink className="nav-link" to="list-oders">
+              <span className="icon-bg"><i className="mdi mdi-cube menu-icon" /></span>
+              <span className="menu-title"> Oders</span>
+            </NavLink>
+          </li>
+          <li className="nav_admin">
           <a className="nav-link" data-toggle="collapse" href="#ui-basic" aria-controls="ui-basic">
           <span className="icon-bg"><i className="mdi mdi-contacts menu-icon" /></span>
               <span className="menu-title"> Users</span>

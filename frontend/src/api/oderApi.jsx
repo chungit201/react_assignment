@@ -6,7 +6,7 @@ export const addOder = (oder) => {
     return instance.post(url,oder);
 }
 
-export const getAll = () =>{
+export const getAllOder = () =>{
     const url= "/oders";
     return instance.get(url)
 };

@@ -20,6 +20,9 @@ import CategoriesAmin from './page/Admin/CategoriesAmin';
 import AddCategories from './component/admin/AddCategories';
 import OderPage from './page/OderPage';
 import firebase from './firebase/firebase';
+import Myoder from './page/OderPage/Myoder';
+import ListOderPage from './page/Admin/ListOderPage';
+import CategoryProductPage from './page/CategoriesPage/CategoryProductPage';
 function App() {
   useEffect(() => {
     getDeviceTokens();
@@ -29,7 +32,6 @@ function App() {
       const messaging = firebase.messaging();
       await messaging.requestPermission();
       const token = await messaging.getToken();
-      localStorage.setItem('deviceToken', JSON.stringify(token));
       console.log('token:', token);
       return token;
     } catch (error) {
@@ -48,6 +50,8 @@ function App() {
             <Route path="products/:id" element={<ProductDetail />} />
             <Route path="checkout/:price" element={<OderPage />} />
             <Route path="login" element={<LoginPage />} />
+            <Route path="oder" element={<Myoder />} />
+            <Route path="categories/:id" element={<CategoryProductPage />} />
           </Route>
 
           {/* LayoutAdmin */}
@@ -57,6 +61,7 @@ function App() {
             <Route path='add-products' element={<AddProduct />} />
             <Route path='list-categories' element={<CategoriesAmin />} />
             <Route path='addCategory' element={<AddCategories />} />
+            <Route path='list-oders' element={<ListOderPage />} />
           </Route>
 
           {/* <Route path="err-500" element={<ServeErrorPage />} />

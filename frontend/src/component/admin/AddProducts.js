@@ -46,6 +46,7 @@ const AddProduct = () => {
           .then(async (url) => {
             const dataProduct = {
               name: product.name,
+              categories:product.categories,
               price: product.price,
               img: url,
               description: product.description,
