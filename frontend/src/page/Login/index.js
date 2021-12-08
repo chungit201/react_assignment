@@ -33,7 +33,7 @@ const LoginPage = () => {
                 <div className="text w-100">
                   <h2>Welcome to login</h2>
                   <p>Don't have an account?</p>
-                  <a href="#" className="btn btn-white btn-outline-white">Sign Up</a>
+                  <a href="register" className="btn btn-white btn-outline-white">Sign Up</a>
                 </div>
               </div>
               <div className="login-wrap p-4 p-lg-5">

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import 'react-notifications-component/dist/theme.css'
+import 'react-notifications-component/dist/theme.css';
+import 'react-toastify/dist/ReactToastify.css';
 // import './App.css';
 import {
   BrowserRouter,
@@ -23,6 +24,7 @@ import firebase from './firebase/firebase';
 import Myoder from './page/OderPage/Myoder';
 import ListOderPage from './page/Admin/ListOderPage';
 import CategoryProductPage from './page/CategoriesPage/CategoryProductPage';
+import RegisterPage from './page/Login/RegisterPage';
 function App() {
   useEffect(() => {
     getDeviceTokens();
@@ -50,6 +52,7 @@ function App() {
             <Route path="products/:id" element={<ProductDetail />} />
             <Route path="checkout/:price" element={<OderPage />} />
             <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
             <Route path="oder" element={<Myoder />} />
             <Route path="categories/:id" element={<CategoryProductPage />} />
           </Route>
