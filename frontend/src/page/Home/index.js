@@ -4,6 +4,7 @@ import Blogs from '../../component/Blog/Blogs'
 import Products from '../../component/Products/Products'
 import Sidebar from '../../component/Sidebar'
 import Slider from '../../component/Slider'
+import { isAuthentication } from '../../component/ultils.js'
 
 const HomePage = () => {
     const [products, setProducts] = useState();

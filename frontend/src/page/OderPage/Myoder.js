@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { getAllOder } from '../../api/oderApi';
-import { Table, Container } from 'react-bootstrap'
+import {getAllOderUser } from '../../api/oderApi';
+import { Table, Container } from 'react-bootstrap';
 const Myoder = () => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user.id);
     const [oder, setOder] = useState();
     useEffect(() => {
         getAll()
     }, []);
     const getAll = async () => {
-        const { data } = await getAllOder();
+        const { data } = await getAllOderUser(user.id);
         console.log(data);
         setOder(data)
     }

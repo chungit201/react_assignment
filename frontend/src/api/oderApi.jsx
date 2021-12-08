@@ -7,7 +7,11 @@ export const addOder = (oder) => {
 }
 
 export const getAllOder = () =>{
-    const url= "/oders";
+    const url= `/oders`;
+    return instance.get(url)
+};
+export const getAllOderUser = (id) =>{
+    const url= `/oders?user=${id}`;
     return instance.get(url)
 };
 

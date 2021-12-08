@@ -49,7 +49,7 @@ const OderPage = () => {
             }
             const push = await sendOne(notification);
             console.log(push);
-            //    window.location.href = '/oder'
+            window.location.href = '/oder'
         }
     }
     return (
