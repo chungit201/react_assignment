@@ -13,7 +13,7 @@ const Myoder = () => {
     }
     return (
         <div>
-            <h2 style={{ textAlign: "center" }}>Đơn hàng của bạn</h2>
+            <h2 style={{ textAlign: "center",marginBottom:"20px" }}>Đơn hàng của bạn</h2>
             <Container>
                 <Table striped bordered hover>
                     <thead>
@@ -35,7 +35,7 @@ const Myoder = () => {
                                 <td>{item.adress}</td>
                                 <td>Thitornton</td>
                                 <td>{item.note}</td>
-                                <td>{item.status}</td>
+                                <td style={{color:"#38892e"}}>{item.status}</td>
                             </tr>
                         }))}
                     </tbody>

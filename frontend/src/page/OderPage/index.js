@@ -14,9 +14,10 @@ const OderPage = () => {
     const [adress, setAdress] = useState();
     const [numberPhone, setNumberPhone] = useState();
     const [note, setNote] = useState();
+    const user = JSON.parse(localStorage.getItem('user'));
     useEffect(() => {
         getOders();
-        if(!sessionStorage.getItem('token')){
+        if (!sessionStorage.getItem('token')) {
             alert("Vui lòng đăng nhập")
             window.location.href = '/login'
         }
@@ -26,30 +27,31 @@ const OderPage = () => {
         console.log(data);
         setCarts(data)
     }
-   const handleSubmit = async(e) =>{
-       e.preventDefault()
-       const oders = {
-           name:name,
-           adress:adress,
-           phone:numberPhone,
-           note:note,
-           products: carts
-       };
-       const {data} = await addOder(oders)
-       console.log(data);
-       const notification = {
-        "title": "BlackBee",
-         "body": "Đã có thêm một đơn hàng mới",
-         "click_action": "http://localhost:3000/admin/list-oders",
-         "icon": "https://www.iconpacks.net/icons/2/free-shopping-bag-icon-2041-thumb.png",
-         "to": "eSTEqpubcsnTHLGD8Ymbbr:APA91bGhzyTGXF-JYKL8vfSi6bYL3EZoF3xFH6JTdMI2Vsp10_op130DLyQN8nN5HT9wbBKbdeVXaRD07DMs3_WkB72Cj6wWfUQvZi41n4YhUQk8SondFle6i1SawDahAnYB0Sp4hPQz"
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const oders = {
+            name: name,
+            user: user.id,
+            adress: adress,
+            phone: numberPhone,
+            note: note,
+            products: carts
+        };
+        const { data } = await addOder(oders)
+        console.log(data);
+        if (data) {
+            const notification = {
+                "title": "BlackBee",
+                "body": "Đã có thêm một đơn hàng mới",
+                "click_action": "http://localhost:3000/admin/list-oders",
+                "icon": "https://northstudio.dev/img/others/img-18.png",
+                "to": "eSTEqpubcsnTHLGD8Ymbbr:APA91bGJBlpNWM8-64u0Ma4CnD_7FwNZrHj39iGdNDz2zxJU0ffsG-PB5MpuY7QuD7JmRiHqHlEZPq0AUlpfpNNbemHcNU6BxD2M2Fk4KJoMmfWxypi_VFbyglzJ1qjV-QAVMatzlMT0"
+            }
+            const push = await sendOne(notification);
+            console.log(push);
+            //    window.location.href = '/oder'
         }
-        const push = await sendOne(notification);
-       if(data){
-           window.location.href = '/oder'
-       }
-      
-   }
+    }
     return (
         <div className="checkout">
             <section id="advertisement">
@@ -63,34 +65,34 @@ const OderPage = () => {
                         <div className="col-6">
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Họ và tên</Form.Label>
-                                <Form.Control type="text" placeholder="Enter adress" 
-                                onChange= {e=>{
-                                    setName(e.target.value)
-                                }}
+                                <Form.Control type="text" placeholder="Enter adress"
+                                    onChange={e => {
+                                        setName(e.target.value)
+                                    }}
                                 />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Label>Địa chỉ</Form.Label>
-                                <Form.Control type="text" placeholder="Enter adress" 
-                                 onChange= {e=>{
-                                    setAdress(e.target.value)
-                                }}
+                                <Form.Control type="text" placeholder="Enter adress"
+                                    onChange={e => {
+                                        setAdress(e.target.value)
+                                    }}
                                 />
                             </Form.Group>
 
                             <Form.Group className="mb-3" >
                                 <Form.Label>Số điện thoại</Form.Label>
                                 <Form.Control type="text" placeholder="Enter phone"
-                                 onChange= {e=>{
-                                    setNumberPhone(e.target.value)
-                                }} />
+                                    onChange={e => {
+                                        setNumberPhone(e.target.value)
+                                    }} />
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label> Lời nhắc</Form.Label>
-                                <Form.Control type="text" placeholder="Enter note" 
-                                 onChange= {e=>{
-                                    setNote(e.target.value)
-                                }}/>
+                                <Form.Control type="text" placeholder="Enter note"
+                                    onChange={e => {
+                                        setNote(e.target.value)
+                                    }} />
                             </Form.Group>
 
                         </div>
