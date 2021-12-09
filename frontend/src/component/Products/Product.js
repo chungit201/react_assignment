@@ -2,7 +2,7 @@ import React from 'react'
 import NumberFormat from 'react-number-format'
 import { NavLink } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 const Product = ({ product }) => {
   const notify = () => toast.success("Add to cart successfully");
   const handelClick = (e) => {

@@ -25,8 +25,11 @@ import Myoder from './page/OderPage/Myoder';
 import ListOderPage from './page/Admin/ListOderPage';
 import CategoryProductPage from './page/CategoriesPage/CategoryProductPage';
 import RegisterPage from './page/Login/RegisterPage';
+
 function App() {
+  
   useEffect(() => {
+    
     getDeviceTokens();
   }, [])
   const getDeviceTokens = async () => {

@@ -9,6 +9,7 @@ import { isAuthentication } from '../../component/ultils.js'
 const HomePage = () => {
     const [products, setProducts] = useState();
     useEffect(() => {
+        isAuthentication()
         const getProducts = async () => {
           try {
             const { data } = await getAll();
